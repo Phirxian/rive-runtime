@@ -1,0 +1,16 @@
+Linking against the installed Rive runtime (after make install)
+=============================================================
+
+The following static libraries are installed and MUST all be linked
+when using librive.a (order matters for static linking):
+
+  -lrive -lrive_pls_renderer -lrive_decoders -lrive_yoga -lrive_harfbuzz -lrive_sheenbidi -lminiaudio
+
+Include directories (typically -I/usr/local/include or your CMAKE_INSTALL_PREFIX/include).
+
+Example (g++):
+  g++ -o myapp myapp.cpp -I/usr/local/include -L/usr/local/lib \
+    -lrive -lrive_pls_renderer -lrive_decoders -lrive_yoga -lrive_harfbuzz -lrive_sheenbidi -lminiaudio
+
+Example (CMake, after find_path/find_library for rive):
+  target_link_libraries(myapp rive rive_pls_renderer rive_decoders rive_yoga rive_harfbuzz rive_sheenbidi miniaudio)
